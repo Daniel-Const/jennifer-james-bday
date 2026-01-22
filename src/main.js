@@ -63,7 +63,7 @@ function init() {
     1,
     1500
   );
-  camera.position.set(0, 200, 500);
+  camera.position.set(0, 200, 700);
 
   cameraTarget = new THREE.Vector3(0, 150, 0);
 
