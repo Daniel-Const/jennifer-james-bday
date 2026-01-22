@@ -2,5 +2,5 @@ import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/jennifer-james-bday-countdown/",
+  base: "/jennifer-james-bday/",
 });

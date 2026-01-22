@@ -1,13 +1,15 @@
-import * as THREE from "../node_modules/three/build/three.module.js";
+import * as THREE from "three";
 
-import { FontLoader } from "../node_modules/three/examples/jsm/loaders/FontLoader.js";
-import { TextGeometry } from "../node_modules/three/examples/jsm/geometries/TextGeometry.js";
+import { FontLoader } from "three/addons/loaders/FontLoader.js";
+import { TextGeometry } from "three/addons/geometries/TextGeometry.js";
 import "./style.css";
 
 THREE.Cache.enabled = true;
 
 let container;
+
 let camera, cameraTarget, scene, renderer;
+
 let group, textMesh1, textMesh2, textGeo, materials;
 
 const getCountdown = () => {
