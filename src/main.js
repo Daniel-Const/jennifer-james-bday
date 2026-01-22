@@ -2,12 +2,13 @@ import * as THREE from "three";
 
 import { FontLoader } from "three/addons/loaders/FontLoader.js";
 import { TextGeometry } from "three/addons/geometries/TextGeometry.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 THREE.Cache.enabled = true;
 
 let container;
 
-let camera, cameraTarget, scene, renderer;
+let camera, cameraTarget, scene, renderer, controls;
 
 let group, textMesh1, textMesh2, textGeo, materials;
 
@@ -32,7 +33,7 @@ let text = getCountdown(),
   fontWeight = "bold"; // normal bold
 
 const depth = 20,
-  size = 70,
+  size = 50,
   hover = 30,
   curveSegments = 4,
   bevelThickness = 2,
@@ -61,7 +62,7 @@ function init() {
     90,
     window.innerWidth / window.innerHeight,
     1,
-    1500
+    1500,
   );
   camera.position.set(0, 200, 700);
 
@@ -80,7 +81,10 @@ function init() {
   const pointLight = new THREE.PointLight(0xffffff, 4.5, 0, 0);
   pointLight.color.setHSL(Math.random(), 1, 0.5);
   pointLight.position.set(0, 100, 90);
+  
   scene.add(pointLight);
+  // const helper = new THREE.PointLightHelper(pointLight)
+  // scene.add(helper)
 
   materials = [
     new THREE.MeshPhongMaterial({ color: 0xffffff, flatShading: true }), // front
@@ -100,7 +104,7 @@ function init() {
       color: 0xffffff,
       opacity: 0.5,
       transparent: true,
-    })
+    }),
   );
   plane.position.y = 100;
   plane.rotation.x = -Math.PI / 2;
@@ -118,6 +122,9 @@ function init() {
 
   container.style.touchAction = "none";
   container.addEventListener("pointerdown", onPointerDown);
+
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.update();
 
   const params = {
     changeColor: function () {
@@ -162,7 +169,7 @@ function loadFont() {
       font = response;
 
       refreshText();
-    }
+    },
   );
 }
 
@@ -247,6 +254,7 @@ function onPointerUp(event) {
 //
 
 function animate() {
+  controls.update();
   const mouseRotation = (targetRotation - group.rotation.y) * 0.05;
   if (mouseRotation > 0.01) {
     group.rotation.y += (targetRotation - group.rotation.y) * 0.05;
@@ -254,7 +262,7 @@ function animate() {
     group.rotation.y += 0.002;
   }
 
-  camera.lookAt(cameraTarget);
+  // camera.lookAt(cameraTarget);
 
   text = getCountdown();
   refreshText();
