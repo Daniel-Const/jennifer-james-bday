@@ -7,17 +7,8 @@ import "./style.css";
 THREE.Cache.enabled = true;
 
 let container;
-
-let camera: THREE.PerspectiveCamera,
-  cameraTarget: THREE.Vector3,
-  scene: THREE.Scene,
-  renderer: THREE.WebGLRenderer;
-
-let group: THREE.Group,
-  textMesh1: THREE.Mesh,
-  textMesh2: THREE.Mesh,
-  textGeo: TextGeometry,
-  materials: THREE.Material[];
+let camera, cameraTarget, scene, renderer;
+let group, textMesh1, textMesh2, textGeo, materials;
 
 const getCountdown = () => {
   const date = new Date(2026, 10, 3, 16).getTime();
@@ -36,7 +27,7 @@ const getCountdown = () => {
 
 let text = getCountdown(),
   bevelEnabled = true,
-  font: any = undefined,
+  font = undefined,
   fontWeight = "bold"; // normal bold
 
 const depth = 20,
