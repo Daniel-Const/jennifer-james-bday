@@ -7,14 +7,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/three": "^0.182.0",
-    "typescript": "~5.9.3",
     "vite": "^7.2.4"
   },
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "three": "^0.182.0"
   }
 }
