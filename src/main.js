@@ -12,7 +12,7 @@ let camera, cameraTarget, scene, renderer;
 let group, textMesh1, textMesh2, textGeo, materials;
 
 const getCountdown = () => {
-  const date = new Date(2026, 10, 3, 16).getTime();
+  const date = new Date(2026, 9, 3, 16).getTime();
   const now = new Date().getTime();
 
   // Find the distance between now and the count down date
