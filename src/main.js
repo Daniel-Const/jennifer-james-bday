@@ -81,7 +81,7 @@ function init() {
   const pointLight = new THREE.PointLight(0xffffff, 4.5, 0, 0);
   pointLight.color.setHSL(Math.random(), 1, 0.5);
   pointLight.position.set(0, 100, 90);
-  
+
   scene.add(pointLight);
   // const helper = new THREE.PointLightHelper(pointLight)
   // scene.add(helper)
@@ -244,25 +244,8 @@ function onPointerMove(event) {
     targetRotationOnPointerDown + (pointerX - pointerXOnPointerDown) * 0.02;
 }
 
-function onPointerUp(event) {
-  if (event.isPrimary === false) return;
-
-  document.removeEventListener("pointermove", onPointerMove);
-  document.removeEventListener("pointerup", onPointerUp);
-}
-
-//
-
 function animate() {
   controls.update();
-  const mouseRotation = (targetRotation - group.rotation.y) * 0.05;
-  if (mouseRotation > 0.01) {
-    group.rotation.y += (targetRotation - group.rotation.y) * 0.05;
-  } else {
-    group.rotation.y += 0.002;
-  }
-
-  // camera.lookAt(cameraTarget);
 
   text = getCountdown();
   refreshText();
